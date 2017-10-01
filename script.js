@@ -1,43 +1,55 @@
 var crinput = document.getElementById("textarea1").value
-document.getElementById("textarea1").addEventListener("blur", checkcr);
+document.getElementById("textarea1").addEventListener("keyup", checkcr);
+document.getElementById("textarea1").addEventListener("keyup", counter);
 document.getElementById("output001").innerHTML = crinput
 
 var keyword = ["PO","pending order", "delete"]
-console.log(keyword)
+
+
+var keywordset = [
+{word:["PO","pending order","Submit PO","po","delete po","delete PO"],message:["Do you need to post registry?"]},
+{word:["delete"],message:["Do you want to delete in system?"]},
+]
+
+
+
+
+
 
 
 function checkcr(){
 	
 	var crinput = document.getElementById("textarea1").value
 	var inputarray = crinput.split(" ");
-	console.log(inputarray[0])
-	console.log(inputarray[1])
-	console.log(inputarray.length)
-	console.log(keyword.length)
 	
 	document.getElementById("output001").innerHTML = ""
 	
 	for(i=0;i<inputarray.length;i++){
 		var currentcombine = inputarray[i] + " " + inputarray[i+1] 
-		console.log("Input word : " + inputarray[i])
-		console.log("combine word is : " + " " + currentcombine)
-		console.log(" ")
-		for(j=0;j<keyword.length;j++){
-			console.log("Checking keyword : " + keyword[j])
-			console.log(" ")
+		
+		
+		for(j=0;j<keywordset.length;j++){
 			
-			if(inputarray[i] == keyword[j] ){
+			for(k=0;k<keywordset[j].word.length;k++){
+				if (currentcombine == keywordset[j].word[k]){
+					
+					document.getElementById("output001").innerHTML += currentcombine + " : " +keywordset[j].message +"<br>"
+
+					
+				}
+				else if(inputarray[i] == keywordset[j].word[k] ){
 				
-				document.getElementById("output001").innerHTML += keyword[j] + ", "
-				console.log("if " + i + j)
-				console.log("--------- ")
-				console.log(" ")
+					document.getElementById("output001").innerHTML += keywordset[j].word[k] + " : " +keywordset[j].message +"<br>"
+					console.log(keywordset[j].word[k])
+					console.log("--------- ")
+
+
 				
 			}
-			else if (currentcombine == keyword[j]){
 				
-				document.getElementById("output001").innerHTML += currentcombine + ", "
-				console.log("if 2")
+			
+			
+			
 			}
 		}
 	}
@@ -48,5 +60,30 @@ function checkcr(){
 	
 	
 }
+
+function counter(){
+	var brnum = [document.getElementById("output001").children]
+	var count = 0
+	console.log(brnum)
+	console.log(brnum[0].length)
+	for(i=0;i<brnum[0].length;i++){
+		console.log(brnum[0][i])
+		if(brnum[0][i].outerHTML == '<br>'){
+			count = count + 1
+			
+		}
+	}
+	//console.log(brnum)
+	document.getElementById("counter1").innerHTML = "(" + count + ")"
+}
+
+
+//counter = counter +1
+//document.getElementById("counter1").innerHTML = counter
+
+
+
+
+
 
 

@@ -20,9 +20,15 @@
 }
 
 .msg1{
-	font-size:30px;
+	font-size:20px;
 	margin:00px;
 	padding:00px;
 	color:#850808;
 	
+}
+
+.separator{
+	height:1px;
+	background-color:grey;
+	margin:20px;
 }
