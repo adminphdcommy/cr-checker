@@ -1,9 +1,19 @@
 var crinput = document.getElementById("textarea1").value
-document.getElementById("textarea1").addEventListener("blur", checkcr);
+document.getElementById("textarea1").addEventListener("keydown", checkcr);
 document.getElementById("output001").innerHTML = crinput
 
 var keyword = ["PO","pending order", "delete"]
-console.log(keyword)
+
+var keywordset = [
+{word:["PO","pending order","Submit PO"],message:["Do you need to post registry?"]},
+{word:["delete"],message:["Do you want to delete in system?"]},
+]
+
+
+
+
+
+console.log("keywordset[0].word[0] = " + keywordset[0].word[0])
 
 
 function checkcr(){
@@ -22,22 +32,25 @@ function checkcr(){
 		console.log("Input word : " + inputarray[i])
 		console.log("combine word is : " + " " + currentcombine)
 		console.log(" ")
-		for(j=0;j<keyword.length;j++){
+		for(j=0;j<keywordset.length;j++){
 			console.log("Checking keyword : " + keyword[j])
 			console.log(" ")
-			
-			if(inputarray[i] == keyword[j] ){
+			for(k=0;k<keywordset[j].word.length;k++){
+				if(inputarray[i] == keywordset[j].word[k] ){
 				
-				document.getElementById("output001").innerHTML += keyword[j] + ", "
-				console.log("if " + i + j)
-				console.log("--------- ")
-				console.log(" ")
+					document.getElementById("output001").innerHTML += keyword[j] + ", "
+					console.log("if " + i + j)
+					console.log("--------- ")
+					console.log(" ")
 				
 			}
-			else if (currentcombine == keyword[j]){
-				
-				document.getElementById("output001").innerHTML += currentcombine + ", "
-				console.log("if 2")
+				else if (currentcombine == keyword[j]){
+					
+					document.getElementById("output001").innerHTML += currentcombine + ", "
+					console.log("if 2")
+			}
+			
+			
 			}
 		}
 	}
