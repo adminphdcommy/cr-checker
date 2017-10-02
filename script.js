@@ -11,7 +11,23 @@ var keywordset = [
 {word:["delete"],message:["Do you want to delete in system?"]},
 ]
 
+var keywordlist = []
 
+function keywordlisting(){
+	
+	for(i=0;i<keywordset.length;i++){
+		for(j=0;j<keywordset[i].word.length;j++){
+			keywordlist.push( " " + keywordset[i].word[j])
+		}
+		
+	}	
+}
+
+
+keywordlisting()
+
+
+document.getElementById("keywordlist").innerHTML = keywordlist
 
 
 
