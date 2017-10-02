@@ -26,10 +26,7 @@ function keywordlisting(){
 
 keywordlisting()
 
-
 document.getElementById("keywordlist").innerHTML = keywordlist
-
-
 
 
 
