@@ -23,7 +23,7 @@
 	font-size:20px;
 	margin:00px;
 	padding:00px;
-	color:#850808;
+	color:black;
 	
 }
 
@@ -31,4 +31,26 @@
 	height:1px;
 	background-color:grey;
 	margin:20px;
+}
+
+.header{
+	background-color: white;
+    overflow: hidden;
+    position: fixed;
+    width:100%;
+    top:0;
+    opacity: 0.9;
+    margin:auto;
+	background-color:#ed1c24;
+	border-bottom:2px solid #C30808;
+}
+
+textarea{
+    background: url(http://i.imgur.com/2cOaJ.png);
+	background-attachment: local;
+	background-repeat: no-repeat;
+	padding-left: 35px;
+	padding-top: 10px;
+    border-color:#ccc;
+	font-size:105%;
 }

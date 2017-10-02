@@ -20,7 +20,10 @@ var keywordset = [
 function checkcr(){
 	
 	var crinput = document.getElementById("textarea1").value
-	var inputarray = crinput.split(" ");
+	var inputarray = crinput.split(/[" "\n\.]/);
+	console.log(inputarray)
+	var rowcountarray = crinput.split(/\n/gm);
+	console.log(rowcountarray)
 	
 	document.getElementById("output001").innerHTML = ""
 	
@@ -33,15 +36,14 @@ function checkcr(){
 			for(k=0;k<keywordset[j].word.length;k++){
 				if (currentcombine == keywordset[j].word[k]){
 					
-					document.getElementById("output001").innerHTML += currentcombine + " : " +keywordset[j].message +"<br>"
+					document.getElementById("output001").innerHTML += currentcombine + "(" + i + ") : " +keywordset[j].message +"<br>"
 
 					
 				}
 				else if(inputarray[i] == keywordset[j].word[k] ){
 				
-					document.getElementById("output001").innerHTML += keywordset[j].word[k] + " : " +keywordset[j].message +"<br>"
-					console.log(keywordset[j].word[k])
-					console.log("--------- ")
+					document.getElementById("output001").innerHTML += keywordset[j].word[k] + "(" + i + ") : " +keywordset[j].message +"<br>"
+					
 
 
 				
@@ -64,10 +66,8 @@ function checkcr(){
 function counter(){
 	var brnum = [document.getElementById("output001").children]
 	var count = 0
-	console.log(brnum)
-	console.log(brnum[0].length)
+	
 	for(i=0;i<brnum[0].length;i++){
-		console.log(brnum[0][i])
 		if(brnum[0][i].outerHTML == '<br>'){
 			count = count + 1
 			
