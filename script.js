@@ -61,7 +61,7 @@ function checkcr(){
 	output.innerHTML = '<tr><th style="border-bottom:1px solid grey;text-align:center;" colspan="3"><h2>Result <span id="counter1" style="color:red;font-size:85%"></span></h2></th><tr  style="text-align:center;font-weight:bold;"><td class="paratd">Para</td><td class="keywordtd">Keyword</td><td >Message</td></tr>'
 	
 	for(i=0;i<paracountarray.length;i++){
-		var parawordarray = paracountarray[i].split(/[" "\n\.]/)
+		var parawordarray = paracountarray[i].split(/[" "\n\.,]/)
 		
 		//parawordarray.map(function(x){ return x.toUpperCase()});
 		//console.log(i + parawordarray)
