@@ -7,7 +7,7 @@ var keyword = ["PO","pending order", "delete"]
 
 
 var keywordset = [
-{word:["PO","PENDING ORDER","Submit PO","po","delete po","delete PO"],message:["Do you need to post registry?"]},
+{word:["PO","pending order","Submit PO", "delete PO"],message:["Do you need to post registry?"]},
 {word:["delete"],message:["Do you want to delete in system?"]},
 ]
 
@@ -31,6 +31,7 @@ function keywordlisting(){
 
 
 keywordlisting()
+checkcr()
 
 document.getElementById("keywordlist").innerHTML = keywordlist
 
@@ -39,7 +40,7 @@ function checkcr(){
 	var crinput = document.getElementById("textarea1").value
 	//var inputarray = crinput.split(/[" "\n\.]/);
 	//console.log(inputarray)
-	var paracountarray = crinput.split(/[\n\r]/gm);
+	var paracountarray = crinput.split(/[\n\r]+/gm);
 	
 	for(a=0;a<paracountarray.length;a++){
 		if(paracountarray[a] == ""){
@@ -60,27 +61,37 @@ function checkcr(){
 		//parawordarray.map(function(x){ return x.toUpperCase()});
 		//console.log(i + parawordarray)
 		//console.log(i + parawordarray.length)
+		//console.log("checking para, " + i + "st para")
 		
+		for(d=0;d<parawordarray.length;d++){
+			parawordarray[d] = parawordarray[d].toUpperCase()
+		}
 		
 		for(j=0;j<parawordarray.length;j++){
 			
-			parawordarray[j] = parawordarray[j].toUpperCase()
+			//console.log("checking words in para, words " + j )
 			//console.log(j + parawordarray)
 			
-			var currentcombine = parawordarray[j] + " " + parawordarray[j+1] 
 			
 			for(k=0;k<keywordset.length;k++){
+				//console.log("checking keyword set, set " + k)
 				
 				for(l=0;l<keywordset[k].word.length;l++){
+					var currentcombine = parawordarray[j] + " " + parawordarray[j+1] 
+					//console.log(currentcombine)
 					if (currentcombine == keywordset[k].word[l]){
 						
 						document.getElementById("output001").innerHTML += "(Para " + parseInt(i+1) + ") " + currentcombine + " : " +keywordset[k].message +"<br>"
+						
+						//console.log("-------double, l " + l + " times, word : " + currentcombine)
 
 						
 					}
 					else if(parawordarray[j] == keywordset[k].word[l] ){
 					
 						document.getElementById("output001").innerHTML += "(Para " + parseInt(i+1) + ") " + keywordset[k].word[l] + " : " +keywordset[k].message +"<br>"
+						
+						//console.log("-------single, l " + l + " times, word : " + keywordset[k].word[l])
 					
 
 
