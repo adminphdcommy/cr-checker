@@ -37,7 +37,7 @@ document.getElementById("keywordlist").innerHTML = keywordlist
 function checkcr(){
 	
 	var crinput = document.getElementById("textarea1").value
-	var inputarray = crinput.split(/[" "\n\.]/);
+	//var inputarray = crinput.split(/[" "\n\.]/);
 	//console.log(inputarray)
 	var paracountarray = crinput.split(/[\n\r]/gm);
 	
