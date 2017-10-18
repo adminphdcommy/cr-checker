@@ -1,14 +1,15 @@
 var crinput = document.getElementById("textarea1").value
 document.getElementById("textarea1").addEventListener("keyup", checkcr);
 document.getElementById("textarea1").addEventListener("keyup", counter);
-document.getElementById("output001").innerHTML = crinput
+//document.getElementById("output001").innerHTML = crinput
 
 var keyword = ["PO","pending order", "delete"]
-
+var output = document.getElementById("output001")
 
 var keywordset = [
-{word:["PO","pending order","Submit PO", "delete PO"],message:["Do you need to post registry?"]},
-{word:["delete"],message:["Do you want to delete in system?"]},
+	{word:["PO","pending order","Submit PO", "delete PO"],message:["Do you need to post registry?"]},
+	{word:["delete"],message:["Do you want to delete in system?"]},
+	{word:["contact"],message:["Inter-related feature: Contact Management, Domain Management, Bulk Modify Contact"]}
 ]
 
 for(b=0;b<keywordset.length;b++){
@@ -31,7 +32,7 @@ function keywordlisting(){
 
 
 keywordlisting()
-checkcr()
+//checkcr()
 
 document.getElementById("keywordlist").innerHTML = keywordlist
 
@@ -51,9 +52,13 @@ function checkcr(){
 	console.log(paracountarray)
 	//console.log(paracountarray.length)
 	
+	/*
+	for(e=2;e<output.childNodes.length+1;e++){
+	output.childNodes[e].innerHTML = ""
+	}
+	*/
 	
-	
-	document.getElementById("output001").innerHTML = ""
+	output.innerHTML = '<tr><th style="border-bottom:1px solid grey;text-align:center;" colspan="3"><h2>Result <span id="counter1" style="color:red;font-size:85%"></span></h2></th><tr  style="text-align:center;font-weight:bold;"><td class="paratd">Para</td><td class="keywordtd">Keyword</td><td >Message</td></tr>'
 	
 	for(i=0;i<paracountarray.length;i++){
 		var parawordarray = paracountarray[i].split(/[" "\n\.]/)
@@ -78,38 +83,40 @@ function checkcr(){
 				
 				for(l=0;l<keywordset[k].word.length;l++){
 					var currentcombine = parawordarray[j] + " " + parawordarray[j+1] 
+					
+					var newtr = document.createElement("tr")
+					var newtd1 = document.createElement("td")
+					var newtd2 = document.createElement("td")
+					var newtd3 = document.createElement("td")
 					//console.log(currentcombine)
 					if (currentcombine == keywordset[k].word[l]){
-						
-						document.getElementById("output001").innerHTML += "(Para " + parseInt(i+1) + ") " + currentcombine + " : " +keywordset[k].message +"<br>"
-						
-						//console.log("-------double, l " + l + " times, word : " + currentcombine)
-
-						
+						newtr.appendChild(newtd1)
+						newtd1.innerHTML = parseInt(i+1)
+						newtd1.setAttribute("class","paratd")
+						newtr.appendChild(newtd2)
+						newtd2.innerHTML = currentcombine
+						newtd2.setAttribute("class","keywordtd")
+						newtr.appendChild(newtd3)
+						newtd3.innerHTML = keywordset[k].message
+						output.appendChild(newtr)
+							
 					}
 					else if(parawordarray[j] == keywordset[k].word[l] ){
-					
-						document.getElementById("output001").innerHTML += "(Para " + parseInt(i+1) + ") " + keywordset[k].word[l] + " : " +keywordset[k].message +"<br>"
+						newtr.appendChild(newtd1)
+						newtd1.innerHTML = parseInt(i+1)
+						newtd1.setAttribute("class","paratd")
+						newtr.appendChild(newtd2)
+						newtd2.innerHTML = keywordset[k].word[l]
+						newtd2.setAttribute("class","keywordtd")
+						newtr.appendChild(newtd3)
+						newtd3.innerHTML = keywordset[k].message
+						output.appendChild(newtr)
 						
-						//console.log("-------single, l " + l + " times, word : " + keywordset[k].word[l])
-					
-
-
-				
-			}
-				
-			
-			
-			
+					}
+				}
 			}
 		}
 	}
-	
-	
-	
-	
-	
-	
 }
 
 function checkcr2(){
@@ -158,7 +165,7 @@ function checkcr2(){
 	
 	
 	
-}
+
 
 function counter(){
 	var brnum = [document.getElementById("output001").children]
