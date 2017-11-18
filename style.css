@@ -1,3 +1,8 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
 .btn1{
 	padding:25px;
 	border-radius: 10px;
@@ -8,6 +13,8 @@
 	
 	
 }
+
+
 
 .btn1:hover{
 	background-color:#8FCA9A;
@@ -45,15 +52,121 @@
 	border-bottom:2px solid #C30808;
 }
 
-#textarea1{
-    background: url(http://i.imgur.com/2cOaJ.png);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+
+
+.container, .backdrop {
+  width: 500px;
+  height: 300px;
+  
+}
+
+.highlights {
+  padding: 10px;
+  font: 90% 'Open Sans', sans-serif;
+  letter-spacing: 1px;
+  text-align:justify;
+}
+
+.container {
+  display: block;
+  margin: 0 auto;
+  transform: translateZ(0);
+  -webkit-text-size-adjust: none;
+  text-align:justify;
+}
+
+.backdrop {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid grey;
+  background-color: #fff;
+  overflow: auto;
+  pointer-events: none;
+  transition: transform 1s;
+  text-align:justify;
+}
+
+.highlights {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	
+  padding-left: 35px;
+}
+
+textarea {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  border: 1px solid grey;
+  border-radius: 0;
+  color: #444;
+  background-color: transparent;
+  overflow: auto;
+  resize: none;
+  transition: transform 1s;
+   width: 500px;
+  height: 300px;  
+  padding: 10px;
+  font: 90% 'Open Sans', sans-serif;
+  letter-spacing: 1px;
+  background: url(http://i.imgur.com/2cOaJ.png);
 	background-attachment: local;
 	background-repeat: no-repeat;
-	padding-left: 35px;
-	padding-top: 10px;
-    border-color:#ccc;
-	font-size:105%;
+  padding-left: 35px;
+  text-align:justify;
 }
+
+mark {
+  border-radius: 3px;
+  color: transparent;
+  background-color: #b1d5e5;
+}
+
+button {
+  display: block;
+  width: 300px;
+  margin: 30px auto 0;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background-color: #74637f;
+  font: 18px 'Opens Sans', sans-serif;
+  letter-spacing: 1px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.perspective .backdrop {
+  transform:
+    perspective(1500px)
+    translateX(-125px)
+    rotateY(45deg)
+    scale(.9);
+}
+
+.perspective textarea {
+  transform:
+    perspective(1500px)
+    translateX(155px)
+    rotateY(45deg)
+    scale(1.1);
+}
+
+textarea:focus, button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #FFD5D5;
+}
+
+
 
 #textarea1:focus {
 	box-shadow:0px ;
@@ -61,7 +174,7 @@
 }
 
 #textarea1:hover {
-	box-shadow:0px 0px 2px 1px grey;
+	box-shadow:0px 0px 0px 2px #FDB3B3;
 		
 }
 
@@ -77,6 +190,7 @@ table, td {
 
 table tr:hover{
 	background-color:#CFEAFD;
+	transition: 0.3s;
 }
 
 .paratd{
